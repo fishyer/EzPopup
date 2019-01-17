@@ -97,7 +97,7 @@ public class PopupWindowHolder {
     }
 
     public void showAsDropDown(View anchor) {
-        showAsDropDown(anchor, 0, 0, Gravity.TOP | Gravity.START);
+        showAsDropDown(anchor, 0, 0, FixedPopupWindow.DEFAULT_ANCHORED_GRAVITY);
     }
 
     /**

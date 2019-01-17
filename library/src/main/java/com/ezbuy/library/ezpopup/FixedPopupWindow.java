@@ -16,7 +16,7 @@ import android.widget.PopupWindow;
  */
 public class FixedPopupWindow extends PopupWindow {
 
-    private static final int DEFAULT_ANCHORED_GRAVITY = Gravity.TOP | Gravity.START;
+    public static final int DEFAULT_ANCHORED_GRAVITY = Gravity.TOP | Gravity.START;
 
     public FixedPopupWindow(View popupView) {
         super(popupView);
