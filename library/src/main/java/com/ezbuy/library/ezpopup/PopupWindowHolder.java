@@ -10,8 +10,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
 
-import com.ezbuy.library.R;
-
 /**
  * author : yutianran
  * time   : 2019/01/17
@@ -21,7 +19,7 @@ import com.ezbuy.library.R;
 public class PopupWindowHolder {
 
     private EzPopup ezPopup;
-    private PopupWindow popupWindow;
+    private FixedPopupWindow popupWindow;
     private View popupView;
 
     public PopupWindowHolder(final EzPopup ezPopup) {
@@ -87,34 +85,50 @@ public class PopupWindowHolder {
     }
 
     public void showCenter() {
-        if (popupWindow.isShowing()) {
-            return;
-        }
-        popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
-        bindListener();
+        showAtLocation(popupView, Gravity.CENTER, 0, 0);
     }
 
     public void showBottom() {
-        if (popupWindow.isShowing()) {
-            return;
-        }
-        popupWindow.showAtLocation(popupView, Gravity.BOTTOM, 0, 0);
-        bindListener();
+        showAtLocation(popupView, Gravity.BOTTOM, 0, 0);
     }
 
     public void showTop() {
-        if (popupWindow.isShowing()) {
-            return;
-        }
-        popupWindow.showAtLocation(popupView, Gravity.TOP, 0, 0);
-        bindListener();
+        showAtLocation(popupView, Gravity.TOP, 0, 0);
     }
 
     public void showAsDropDown(View anchor) {
+        showAsDropDown(anchor, 0, 0, Gravity.TOP | Gravity.START);
+    }
+
+    /**
+     * 最终调用的showAsDropDown
+     *
+     * @param anchor
+     * @param xoff
+     * @param yoff
+     * @param gravity
+     */
+    public void showAsDropDown(View anchor, int xoff, int yoff, int gravity) {
         if (popupWindow.isShowing()) {
             return;
         }
-        popupWindow.showAsDropDown(anchor, 0, 0);
+        popupWindow.showAsDropDown(anchor, xoff, yoff, gravity);
+        bindListener();
+    }
+
+    /**
+     * 最终调用的showAtLocation
+     *
+     * @param parent
+     * @param gravity
+     * @param x
+     * @param y
+     */
+    public void showAtLocation(View parent, int gravity, int x, int y) {
+        if (popupWindow.isShowing()) {
+            return;
+        }
+        popupWindow.showAtLocation(parent, gravity, x, y);
         bindListener();
     }
 

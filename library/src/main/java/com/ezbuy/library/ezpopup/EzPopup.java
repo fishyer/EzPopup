@@ -1,7 +1,9 @@
 package com.ezbuy.library.ezpopup;
 
 import android.app.Activity;
+import android.support.annotation.AnimRes;
 import android.support.annotation.ColorRes;
+import android.support.annotation.LayoutRes;
 
 /**
  * author : yutianran
@@ -11,11 +13,15 @@ import android.support.annotation.ColorRes;
  */
 public class EzPopup {
 
+    public final float DARK_WINDOW_ALPHA = 0.5f;
+
     private Activity activity;
+    @LayoutRes
     private int contentId;
     @ColorRes
     private int backgroundColor = -1;
     private float windowAlpha = 1.0f;
+    @AnimRes
     private int animationStyle = -1;
     private PopupListener showListener;
     private PopupListener hideListener;

@@ -1,7 +1,5 @@
 package com.ezbuy.library.ezpopup;
 
-import android.widget.PopupWindow;
-
 /**
  * author : yutianran
  * time   : 2019/01/17
@@ -10,5 +8,5 @@ import android.widget.PopupWindow;
  */
 public interface PopupTransformer {
 
-    PopupWindow transform(PopupWindow popupWindow);
+    FixedPopupWindow transform(FixedPopupWindow popupWindow);
 }
