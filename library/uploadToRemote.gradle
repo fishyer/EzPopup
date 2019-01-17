@@ -1,18 +1,28 @@
 apply plugin: 'maven'
 
+def userName='admin'
+def password='admin123'
+
+def lib_url='http://fishyer.vipgz1.idcfengye.com/repository/maven-releases/'
+def lib_groupId='com.ezbuy'
+def lib_artifactId='ezpopup'
+def lib_version='0.0.1'
+
 uploadArchives {
+    configuration = configurations.archives
+
     repositories.mavenDeployer {
-        repository(url: project.url) {
-            authentication(userName: project.userName, password: project.password)
+        repository(url: lib_url) {
+            authentication(userName: userName, password: password)
         }
 
         pom.project {
-            groupId  project.groupId
-            artifactId  project.artifactId
-            version  project.version
+            groupId  lib_groupId
+            artifactId  lib_artifactId
+            version  lib_version
             packaging 'aar'
+            description 'none'
         }
-
     }
 
 }
