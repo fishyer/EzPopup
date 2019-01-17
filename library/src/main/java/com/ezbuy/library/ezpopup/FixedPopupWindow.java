@@ -34,20 +34,15 @@ public class FixedPopupWindow extends PopupWindow {
 
     @Override
     public void showAsDropDown(View anchor, int xoff, int yoff, int gravity) {
-        //Build.VERSION_CODES.N api 24  android 7.0
-        //Build.VERSION_CODES.N_MR1 api 25  android 7.1.1
-        //Build.VERSION_CODES.O api 26  android 8.0
-        if (Build.VERSION.SDK_INT == 24 || Build.VERSION.SDK_INT == 25 || Build.VERSION.SDK_INT == 26) {
-            int[] location = new int[2];
-            anchor.getLocationOnScreen(location);
-            int x = location[0];
-            int y = location[1];
-            if (super.getHeight() == ViewGroup.LayoutParams.MATCH_PARENT) {
-                int screenHeight = ScreenUtil.getScreenHeight();
-                super.setHeight(screenHeight - y - anchor.getHeight() - yoff);
-            }
+        if (Build.VERSION.SDK_INT >= 24) {
+            Rect visibleFrame = new Rect();
+            anchor.getGlobalVisibleRect(visibleFrame);
+            int height = anchor.getResources().getDisplayMetrics().heightPixels - visibleFrame.bottom;
+            setHeight(height);
+            super.showAsDropDown(anchor, xoff, yoff, gravity);
+        } else {
+            super.showAsDropDown(anchor, xoff, yoff, gravity);
         }
-        PopupWindowCompat.showAsDropDown(this, anchor, xoff, yoff, gravity);
     }
 
     @Override
