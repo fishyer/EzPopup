@@ -1,0 +1,18 @@
+apply plugin: 'maven'
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: project.url) {
+            authentication(userName: project.userName, password: project.password)
+        }
+
+        pom.project {
+            groupId  project.groupId
+            artifactId  project.artifactId
+            version  project.version
+            packaging 'aar'
+        }
+
+    }
+
+}
