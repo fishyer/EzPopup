@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private PopupWindowHolder getPopupWindowHolder() {
-        if (holder != null) {
-            return holder;
-        }
+//        if (holder != null) {
+//            return holder;
+//        }
         holder = EzPopup.newInstance()
                 .setActivity(this)
                 .setContentId(R.layout.popupview)
