@@ -1,5 +1,7 @@
 # EzPopup
 
+#### 解决问题
+
 处理PopupWindow在Android 7.x中兼容性问题的示例
 
 PopupWindow 中的 showAsDropDown(View anchor) 用于在指定锚点View下方显示 PopupWindow，在Android 7.0 (api<=23) 以前是没什么问题的，但是在Android 7.x系统上，会在某些情况下出现兼容问题：
@@ -9,6 +11,18 @@ PopupWindow 中的 showAsDropDown(View anchor) 用于在指定锚点View下方�
 如果指定 PopupWindow 的高度为 WRAP_CONTENT, 调用 showAsDropDown(View anchor) 时，便不会出现兼容性的问题。
 
 如果指定 PopupWindow 的高度为自定义的值height，调用 showAsDropDown(View anchor)时， 如果 height > 锚点 anchor 下边缘与屏幕底部的距离， 则还是会出现7.0、7.1上显示异常的问题；否则，不会出现该问题。可以看出，情况1和2是情况3的特例。
+
+#### 依赖方式
+
+在项目的根build.gradle中，添加mavan仓库
+```
+maven { url "http://fishyer.vipgz1.idcfengye.com/repository/maven-public/"}
+```
+
+在模块的build.gradle中，添加maven依赖
+```
+implementation 'com.ezbuy:ezpopup:11'
+```
 
 #### 使用示例
 
