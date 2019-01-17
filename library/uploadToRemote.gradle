@@ -1,12 +1,30 @@
 apply plugin: 'maven'
 
-def userName='admin'
-def password='admin123'
+def userName = 'admin'
+def password = 'admin123'
 
-def lib_url='http://fishyer.vipgz1.idcfengye.com/repository/ezpopup/'
-def lib_groupId='com.ezbuy'
-def lib_artifactId='ezpopup'
-def lib_version='0.0.1'
+def lib_url = 'http://fishyer.vipgz1.idcfengye.com/repository/ezpopup/'
+def lib_groupId = 'com.ezbuy'
+def lib_artifactId = 'ezpopup'
+def lib_version = getGitCommitCount()
+
+def getGitCommitCount() {
+    return 'git rev-list HEAD --first-parent --count'.execute().text.trim().toInteger()
+}
+
+def getGitTag() {
+    try {
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine 'git', 'describe', '--tags'
+            standardOutput = stdout
+        }
+        return stdout.toString().trim()
+    }
+    catch (ignored) {
+        return "0.0.1"
+    }
+}
 
 uploadArchives {
     configuration = configurations.archives
@@ -17,9 +35,9 @@ uploadArchives {
         }
 
         pom.project {
-            groupId  lib_groupId
-            artifactId  lib_artifactId
-            version  lib_version
+            groupId lib_groupId
+            artifactId lib_artifactId
+            version lib_version
             packaging 'aar'
             description 'none'
         }
