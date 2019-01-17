@@ -1,4 +1,4 @@
-package com.ezbuy.library;
+package com.ezbuy.library.ezpopup;
 
 /**
  * author : yutianran
@@ -6,9 +6,7 @@ package com.ezbuy.library;
  * desc   :
  * version: 1.0
  */
-public class EzPopup {
+public class PopupWindowCompat {
 
-    public void init(){
 
-    }
 }

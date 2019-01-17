@@ -3,7 +3,7 @@ apply plugin: 'maven'
 def userName='admin'
 def password='admin123'
 
-def lib_url='http://fishyer.vipgz1.idcfengye.com/repository/maven-releases/'
+def lib_url='http://fishyer.vipgz1.idcfengye.com/repository/ezpopup/'
 def lib_groupId='com.ezbuy'
 def lib_artifactId='ezpopup'
 def lib_version='0.0.1'
