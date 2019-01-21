@@ -18,7 +18,8 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url "http://fishyer.vipgz1.idcfengye.com/repository/maven-public/"}
+        maven { url 'http://192.168.199.65:8081/repository/eznetlog/' }
+        maven { url 'http://192.168.199.65:8081/repository/eznetlog-no-op/' }
     }
 }
 
